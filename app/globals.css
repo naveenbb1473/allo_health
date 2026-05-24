@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* ── Design system tokens (AMOLED True-Black Mode) ────────────────────── */
+@theme inline {
+  /* Typography */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* Palette */
+  --color-background:  #000000; /* Pure AMOLED black */
+  --color-surface:     #0c0c0e; /* Near-black card surface */
+  --color-border:      #18181b; /* zinc-900 — dark separator */
+  --color-border-muted: #27272a; /* zinc-800 — slightly visible */
+
+  /* Accent / semantic */
+  --color-primary:     #3b82f6; /* blue-500 */
+  --color-success:     #10b981; /* emerald-500 */
+  --color-warning:     #f59e0b; /* amber-500 */
+  --color-danger:      #ef4444; /* red-500 */
+  --color-info:        #06b6d4; /* cyan-500 */
+
+  /* Text hierarchy */
+  --color-text-primary:   #f4f4f5; /* zinc-100 */
+  --color-text-secondary: #a1a1aa; /* zinc-400 */
+  --color-text-muted:     #52525b; /* zinc-600 */
+}
+
+/* ── Base resets ─────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  background-color: #000000;
+  color-scheme: dark;
+}
+
+body {
+  min-height: 100%;
+  background-color: #000000;
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Focus ring ──────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ── Scrollbar (webkit) ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #09090b; }
+::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+
+/* ── Form elements: inputs, selects, textareas ───────────────────────── */
+input,
+select,
+textarea {
+  background-color: #18181b !important; /* zinc-900 */
+  color: var(--color-text-primary) !important;
+  border-color: var(--color-border-muted) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-muted) !important;
+}
+
+select option {
+  background-color: #18181b !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* ── Range slider ────────────────────────────────────────────────────── */
+input[type="range"] {
+  accent-color: var(--color-primary);
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+/* ── Radix UI portal overlays (Select content, Tooltip, etc.) ────────── */
+[data-radix-popper-content-wrapper] [role="listbox"],
+[data-radix-popper-content-wrapper] [role="presentation"],
+[data-radix-select-content],
+[data-radix-tooltip-content] {
+  background-color: #09090b !important; /* zinc-950 */
+  border-color: var(--color-border-muted) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* ── bg-white / bg-slate-* remnants → pure black ─────────────────────── */
+.bg-white { background-color: #09090b !important; }
+.bg-slate-50,
+.bg-slate-50\/50,
+.bg-slate-50\/30 { background-color: #000000 !important; }
+.bg-slate-100,
+.bg-slate-200 { background-color: #18181b !important; }
+
+/* ── border-slate-* → zinc ────────────────────────────────────────────── */
+.border-slate-100,
+.border-slate-200,
+.border-slate-300 { border-color: var(--color-border-muted) !important; }
+
+/* ── text-slate-* → zinc ──────────────────────────────────────────────── */
+.text-slate-900,
+.text-slate-950,
+.text-slate-800,
+.text-slate-700 { color: var(--color-text-primary) !important; }
+.text-slate-600,
+.text-slate-500 { color: var(--color-text-secondary) !important; }
+.text-slate-400 { color: var(--color-text-muted) !important; }
+
+/* ── Reduced motion ──────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
